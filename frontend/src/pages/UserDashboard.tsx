@@ -16,7 +16,7 @@ const UserDashboard = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [orders, setOrders] = useState<any[]>([]);
   const [activeTab, setActiveTab] = useState("store");
-
+  console.log("user");
   useEffect(() => {
     const role = localStorage.getItem("userRole");
     if (role !== "user") {
