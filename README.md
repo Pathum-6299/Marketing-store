@@ -61,6 +61,7 @@ A `run.bat` file is included at the repository root (`C:\Users\USER\Desktop\STOR
 Both servers will run in separate windows so you can keep this setup terminal free.
 
 **How to run:**
+
 - Double-click `run.bat` in Explorer, or
 - Open Command Prompt in this folder and run: `run.bat`
 
