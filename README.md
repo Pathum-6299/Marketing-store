@@ -13,9 +13,11 @@ Make sure the target machine has:
 
 - Python 3.10+ (or compatible) on PATH
 - Node.js (16+) and npm on PATH
+- **MySQL Server 8.0+** running on `localhost:3306`
+- MySQL Workbench or MySQL CLI client
 - Git (optional, if cloning)
 
-If any of these are missing, install them before running `run.bat`.
+**Important**: Before running the app, you must import the database. See [DATABASE_SETUP.md](./DATABASE_SETUP.md) for step-by-step instructions.
 
 ## Quick start (manual)
 
@@ -39,9 +41,17 @@ npm install
 npm run dev
 ```
 
+## Database Setup (Required First Step)
+
+Before running `run.bat`, you **must** import the database:
+
+1. Open the file [`DATABASE_SETUP.md`](./DATABASE_SETUP.md) in this folder
+2. Follow the step-by-step instructions to import `Dump20251113.sql` using MySQL Workbench
+3. Verify the `store` database was created and contains tables
+
 ## run.bat (automated)
 
-A `run.bat` file is included at the repository root (`C:\Users\USER\Desktop\STORE\run.bat`). Double-click it or run it from Command Prompt. What it does:
+A `run.bat` file is included at the repository root (`C:\Users\USER\Desktop\STORE\run.bat`). **Only run this after setting up the database.** What it does:
 
 1. Creates a Python virtual environment in `backend/venv` (if it doesn't already exist).
 2. Installs backend Python requirements from `backend/requirements.txt`.
@@ -49,6 +59,10 @@ A `run.bat` file is included at the repository root (`C:\Users\USER\Desktop\STOR
 4. Installs frontend npm packages and starts the Vite dev server (`npm run dev`) in another Command Prompt window.
 
 Both servers will run in separate windows so you can keep this setup terminal free.
+
+**How to run:**
+- Double-click `run.bat` in Explorer, or
+- Open Command Prompt in this folder and run: `run.bat`
 
 ### Notes & Troubleshooting
 

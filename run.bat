@@ -1,10 +1,22 @@
 @echo off
 REM run.bat - sets up backend venv, installs requirements and starts backend and frontend in separate cmd windows
+REM IMPORTANT: Before running this script, you must import the database (Dump20251113.sql)
+REM See DATABASE_SETUP.md for step-by-step instructions
 
 REM Move to the script directory (repo root)
 cd /d "%~dp0"
 
+echo.
+echo ============================================================
+echo          STORE Application Startup
+echo ============================================================
 echo Running from: %cd%
+echo.
+echo REMINDER: Ensure MySQL is running and database is imported!
+echo See DATABASE_SETUP.md for database setup instructions.
+echo.
+echo ============================================================
+echo.
 
 :: ----- Backend setup -----
 cd /d "%~dp0backend"
