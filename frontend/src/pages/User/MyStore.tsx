@@ -24,31 +24,84 @@ const MyStore = ({ store, onStoreCreated, onStoreUpdate }: MyStoreProps) => {
     }
   }, [store]);
 
-  const handleCreateStore = (e: React.FormEvent) => {
-    e.preventDefault();
-    const code = `REF-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+const handleCreateStore = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  // 1. Generate store code (you already had this logic)
+  const code = `REF-${Math.random()
+    .toString(36)
+    .substring(2, 8)
+    .toUpperCase()}`;
+
+  // 2. Prepare payload for backend
+  const username = localStorage.getItem("userName");
+  const userMobile = localStorage.getItem("userMobile");
+
+  const payload = {
+    store_name: storeName,
+    user_id: userMobile,   
+    username: username,
+    store_code: code,
+  };
+
+  console.log("Payload being sent:", payload);
+
+
+  try {
+    // 3. Call backend API
+    const response = await fetch(
+      "http://127.0.0.1:8000/user-store/create-store",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to create store");
+    }
+
+    const data = await response.json();
+
+    // 4. Create frontend store object (same as before)
     const newStore: StoreType = {
       name: storeName,
       referralCode: code,
       selectedProducts: [],
       totalPoints: 0,
       totalOrders: 0,
-      orders: []
+      orders: [],
     };
-    
+
+    // 5. Save locally (your existing logic)
     localStorage.setItem("userStore", JSON.stringify(newStore));
-    
-    const allStores = JSON.parse(localStorage.getItem("allUserStores") || "{}");
+
+    const allStores = JSON.parse(
+      localStorage.getItem("allUserStores") || "{}"
+    );
     allStores[code] = newStore;
     localStorage.setItem("allUserStores", JSON.stringify(allStores));
-    
+
+    // 6. Notify parent component
     onStoreCreated(newStore);
-    
+
+    // 7. Success message
     toast({
       title: "Store created!",
       description: `Your store "${storeName}" is now live`,
     });
-  };
+  } catch (error) {
+    toast({
+      title: "Error",
+      description: "Failed to create store. Please try again.",
+      variant: "destructive",
+    });
+  }
+};
 
   const copyReferralCode = () => {
     if (store?.referralCode) {
