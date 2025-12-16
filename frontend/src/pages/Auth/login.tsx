@@ -83,7 +83,7 @@ const Login = () => {
   return (
     <form onSubmit={handleLogin} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="login-mobile">{t("auth.email")}</Label>
+        <Label htmlFor="login-mobile">{t("auth.mobileno")}</Label>
         <Input
           id="login-mobile"
           type="tel"

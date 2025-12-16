@@ -21,6 +21,7 @@ const translations = {
     "auth.login": "Login",
     "auth.register": "Register",
     "auth.email": "Email",
+    "auth.mobileno": "Mobile No",
     "auth.username": "Username",
     "auth.password": "Password",
     "auth.forgotPassword": "Forgot Password?",
