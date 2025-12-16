@@ -68,7 +68,7 @@ const Register = () => {
   return (
     <form onSubmit={handleRegister} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="register-mobile">{t("auth.email")}</Label>
+        <Label htmlFor="register-mobile">{t("auth.mobileno")}</Label>
         <Input
           id="register-mobile"
           type="tel"
