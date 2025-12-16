@@ -75,3 +75,35 @@
 2025-11-20 13:31:33,299 | INFO | REGISTER REQUEST: mobile=0778927316 ref=PATA9TD
 2025-11-20 13:34:08,298 | INFO | REGISTER REQUEST: mobile=0778927313 ref=PATA9TD
 2025-11-20 13:35:00,104 | INFO | REGISTER REQUEST: mobile=0778927344 ref=PATA
+2025-12-16 12:10:27,851 | INFO | REGISTER REQUEST: mobile=0775673773 ref=None
+2025-12-16 12:11:07,936 | INFO | LOGIN REQUEST: mobile=071141130
+2025-12-16 12:11:07,939 | WARNING | LOGIN FAILED: No user for mobile 071141130
+2025-12-16 12:11:07,939 | ERROR | LOGIN ERROR: 401: Invalid credentials
+2025-12-16 12:11:11,997 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:11:12,013 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:11:19,286 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:11:19,306 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:14:31,705 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:14:31,792 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:17:46,621 | INFO | REGISTER REQUEST: mobile=0475676760 ref=None
+2025-12-16 12:22:33,801 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:22:33,817 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:22:39,845 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:22:39,862 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:26:11,148 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:26:11,193 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:26:15,687 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:26:15,717 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:27:28,019 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:27:28,051 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:32:19,161 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:32:19,309 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:32:55,407 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:32:55,472 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:33:08,440 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:33:08,474 | ERROR | LOGIN ERROR: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2025-12-16 12:35:50,949 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:35:51,772 | INFO | LOGIN SUCCESS: mobile=0711411308
+2025-12-16 12:36:06,723 | INFO | LOGIN REQUEST: mobile=0711411308
+2025-12-16 12:36:07,136 | INFO | LOGIN SUCCESS: mobile=0711411308
+2025-12-16 12:36:58,624 | INFO | REGISTER REQUEST: mobile=0775673773 ref=None
