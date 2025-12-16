@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import MyStore from "./User/MyStore";
 import MyProducts from "./User/MyProducts";
@@ -16,7 +16,7 @@ const UserDashboard = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [orders, setOrders] = useState<any[]>([]);
   const [activeTab, setActiveTab] = useState("store");
-  console.log("user");
+  const location = useLocation();
   useEffect(() => {
     const role = localStorage.getItem("userRole");
     if (role !== "user") {
@@ -52,6 +52,14 @@ const UserDashboard = () => {
       }
     }
   }, [navigate]);
+
+  // Keep activeTab in sync with route (if user navigates directly to /user/campaigns)
+  useEffect(() => {
+    const path = location.pathname || "";
+    if (path.startsWith("/user/campaigns")) {
+      setActiveTab("campaigns");
+    }
+  }, [location.pathname]);
 
   const handleStoreCreated = (newStore: StoreType) => {
     setStore(newStore);
@@ -115,6 +123,11 @@ const UserDashboard = () => {
       return <MyOrders orders={orders} />;
     }
 
+    if (activeTab === "campaigns") {
+      // Campaigns are rendered on their own route (/user/campaigns)
+      return null;
+    }
+
     if (activeTab === "referral") {
       return (
         <ReferralPoints
@@ -165,6 +178,11 @@ const UserDashboard = () => {
       badge: orders.length,
     },
     {
+      id: "campaigns",
+      label: "Campaigns",
+      icon: Award,
+    },
+    {
       id: "referral",
       label: "Referral & Points",
       icon: Award,
@@ -177,7 +195,14 @@ const UserDashboard = () => {
       userRole="user"
       navItems={navItems}
       activeTab={activeTab}
-      onTabChange={setActiveTab}
+      onTabChange={(tab) => {
+        setActiveTab(tab);
+        if (tab === "campaigns") {
+          navigate("/user/campaigns");
+        } else {
+          navigate("/user");
+        }
+      }}
     >
       {/* Offers / Vouchers section (mock data + simple rules) */}
       <OffersSection store={store} />

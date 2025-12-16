@@ -41,5 +41,3 @@ export interface Campaign {
   active: boolean;
   createdAt: string;
 }
-
-
