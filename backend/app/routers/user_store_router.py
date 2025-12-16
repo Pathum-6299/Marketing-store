@@ -1,12 +1,13 @@
 # app/routers/user_store_router.py
 import logging
 import os
+import uuid
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session, joinedload
 from app.db import get_db
-from app.models.user_store_model import UserStore
+from app.models.user_store_model import UserStore,Store
 from app.models.product_model import ProductBasic, ProductDetails
-from app.schemas.user_store_schema import UserStoreCreate, UserStoreOut
+from app.schemas.user_store_schema import UserStoreCreate, UserStoreOut,StoreCreate, StoreOut
 from app.schemas.product_schema import ProductOut, ProductBasicOut, ProductDetailsOut
 
 # Ensure logs directory exists
@@ -167,3 +168,47 @@ def get_product(product_id: str, db: Session = Depends(get_db)):
     except Exception as e:
         logger.error(f"GET PRODUCT ERROR: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Failed to load product: {str(e)}")
+
+@router.post("/create-store", response_model=StoreOut)
+def create_store(data: StoreCreate, db: Session = Depends(get_db)):
+    """
+    Create a new store
+    """
+    try:
+        logger.info(f"CREATE STORE: user_id={data.user_id}, store_code={data.store_code}")
+
+        # Check if store code already exists
+        existing_store = db.query(Store).filter(
+            Store.store_code == data.store_code
+        ).first()
+
+        if existing_store:
+            raise HTTPException(
+                status_code=400,
+                detail="Store code already exists"
+            )
+
+        store = Store(
+            store_id=str(uuid.uuid4()),
+            store_name=data.store_name,
+            user_id=data.user_id,
+            username=data.username,
+            store_code=data.store_code,
+        )
+
+        db.add(store)
+        db.commit()
+        db.refresh(store)
+
+        logger.info(f"STORE CREATED: store_id={store.store_id}")
+        return store
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        db.rollback()
+        logger.error(f"CREATE STORE ERROR: {str(e)}", exc_info=True)
+        raise HTTPException(
+            status_code=500,
+            detail="Failed to create store"
+        )
