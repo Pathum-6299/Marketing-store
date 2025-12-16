@@ -32,4 +32,12 @@ export interface Order {
   createdAt: string;
 }
 
-
+export interface Campaign {
+  id: string;
+  title: string;
+  description?: string;
+  platforms?: string[]; // e.g. ['facebook','twitter']
+  images?: string[];
+  active: boolean;
+  createdAt: string;
+}

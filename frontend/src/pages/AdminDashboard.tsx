@@ -8,6 +8,7 @@ import ProductsList from "./Admin/ProductsList";
 import ProductEdit from "./Admin/ProductEdit";
 import AddProduct from "./Admin/AddProduct";
 import OrdersList from "./Admin/OrdersList";
+import CampaignsList from "./Admin/CampaignsList";
 import { Product, Order } from "./Admin/types";
 import config from "@/config";
 
@@ -237,6 +238,10 @@ const AdminDashboard = () => {
       );
     }
 
+    if (activeTab === "campaigns") {
+      return <CampaignsList />;
+    }
+
     return null;
   };
 
@@ -250,6 +255,12 @@ const AdminDashboard = () => {
     {
       id: "orders",
       label: "Orders",
+      icon: ShoppingBag,
+      badge: orders.length,
+    },
+    {
+      id: "campaigns",
+      label: "Campaigns",
       icon: ShoppingBag,
       badge: orders.length,
     },

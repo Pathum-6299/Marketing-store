@@ -37,4 +37,12 @@ export interface Store {
   orders: Order[];
 }
 
-
+export interface Campaign {
+  id: string;
+  title: string;
+  description?: string;
+  platforms?: string[];
+  images?: string[];
+  active: boolean;
+  createdAt: string;
+}
