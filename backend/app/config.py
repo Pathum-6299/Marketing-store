@@ -9,7 +9,7 @@ class Settings:
     API_VERSION: str = "v1"
 
     MYSQL_USER: str = os.getenv("MYSQL_USER", "root")
-    MYSQL_PASSWORD: str = os.getenv("MYSQL_PASSWORD", "990522@Mysql")
+    MYSQL_PASSWORD: str = os.getenv("MYSQL_PASSWORD", "Root@1234")
     MYSQL_HOST: str = os.getenv("MYSQL_HOST", "localhost")
     MYSQL_DB: str = os.getenv("MYSQL_DB", "store")
 
